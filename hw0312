@@ -3,34 +3,45 @@
 
 # 運用巢狀迴圈進行象限的判讀，使用while...else...進行判讀，並適時break掉迴圈
 
-num=[-3 , 1 ,3]
+num1 = [-3 , 1 ,-3]
+num2 = [3 , 1 ,-3]
+num3 = [-3 , 1 ,3]
+num4 = [3 , 1 ,3]
+num5 = [-3 , -1 ,-3]
 
-while num[0]<0 :
-    while num[1]<0 :
-        while num[2]<0 :
-            print(num,": 第7象限")
+def pointchoose(num) :
+    while num[0]<0 :
+        while num[1]<0 :
+            while num[2]<0 :
+                print(num,": 第7象限")
+                break
+            else :
+                print(num,": 第3象限")
             break
         else :
-            print(num,": 第3象限")
+            while num[2]<0 :
+                print(num,": 第8象限")
+                break
+            else :
+                print(num,": 第4象限")
         break
     else :
-        while num[2]<0 :
-            print(num,": 第8象限")
+        while num[1]<0 :
+            while num[2]<0 :
+                print(num,": 第6象限")
+                break
+            else :
+                print(num,": 第2象限")
             break
         else :
-            print(num,": 第4象限")
-    break
-else :
-    while num[1]<0 :
-        while num[2]<0 :
-            print(num,": 第6象限")
-            break
-        else :
-            print(num,": 第2象限")
-        break
-    else :
-        while num[2]<0 :
-            print(num,": 第5象限")
-            break
-        else :
-            print(num,": 第1象限")
+            while num[2]<0 :
+                print(num,": 第5象限")
+                break
+            else :
+                print(num,": 第1象限")
+                
+pointchoose(num1)
+pointchoose(num2)
+pointchoose(num3)
+pointchoose(num4)
+pointchoose(num5)
