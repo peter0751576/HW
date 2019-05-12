@@ -1,5 +1,5 @@
 import numpy as np
-
+pic = []
 pic = np.array( [ (0,0,0,0,0,0,0,0,0,0), 
                   (0,1,1,1,1,0,0,0,1,1),
                   (0,0,1,1,1,0,1,1,1,1),
@@ -13,9 +13,34 @@ pic = np.array( [ (0,0,0,0,0,0,0,0,0,0),
 
 # ()
 # print(np.array)
-one=np.zeros( (10,10) )
-two=np.zeros( (10,10) )
-three=np.zeros( (10,10) )
+
+islands = np.zeros(10,100)
+area = []
+areanumber=1
+count = 0   #for buffer
+cal = 0
+buffer=[][]
+
+for i in range(10) :
+  for j in range(10) :
+    if pic[i][j] == 1 :
+      pic[i][j]=2
+      cal = cal + 1
+      count = 0
+      # 判斷四周
+      if pic[i][j+1] == 1 :
+        count =count + 1
+        buffer[count]=(i,j+1)
+        cal = cal + 1
+      if pic[i+1][j] == 1 :
+        count =count + 1
+        buffer[count]=(i+1,j)
+        cal = cal + 1
+      if pic[i][j-1] == 1 :
+        count =count + 1
+        buffer[count]=(i,j-1)
+        cal = cal + 1
+
 
 
 
