@@ -14,7 +14,8 @@ pic = np.array( [ (0,0,0,0,0,0,0,0,0,0),
 # ()
 # print(np.array)
 
-islands = np.zeros(10,100)
+islands = np.zeros(10,10,10)
+numofi=0
 area = []
 areanumber=1
 count = 0   #for buffer
@@ -24,22 +25,52 @@ buffer=[][]
 for i in range(10) :
   for j in range(10) :
     if pic[i][j] == 1 :
+      numofi = numofi +1
       pic[i][j]=2
+      islands[numofi][i][j]=1
       cal = cal + 1
       count = 0
+      num = 1
       # 判斷四周
       if pic[i][j+1] == 1 :
         count =count + 1
-        buffer[count]=(i,j+1)
+        pic[i][j+1]=2
+        islands[numofi][i][j+1]=1
+        buffer[cal]=(i,j+1)
         cal = cal + 1
       if pic[i+1][j] == 1 :
         count =count + 1
-        buffer[count]=(i+1,j)
+        pic[i+1][j]=2
+        islands[numofi][i+1][j]=1
+        buffer[cal]=(i+1,j)
         cal = cal + 1
       if pic[i][j-1] == 1 :
         count =count + 1
-        buffer[count]=(i,j-1)
+        pic[i][j-1]=2
+        islands[numofi][i][j-1]=1
+        buffer[cal]=(i,j-1)
         cal = cal + 1
+      while( count!=0 ) :
+        x=buffer[num][0]
+        y=buffer[num][1]
+        pic[x][y]=2
+        islands[numofi][x][y]=1
+        count = count - 1
+        if pic[x][y+1] == 1 :
+          count =count + 1
+          buffer[cal]=(i,j+1)
+          cal = cal + 1
+        if pic[i+1][j] == 1 :
+          count =count + 1
+          buffer[cal]=(i+1,j)
+          cal = cal + 1
+        if pic[i][j-1] == 1 :
+          count =count + 1
+          buffer[cal]=(i,j-1)
+          cal = cal + 1
+        num = num +1
+    area[numofi] = cal
+# 圖片分塊結束
 
 
 
