@@ -72,6 +72,9 @@ for i in range(10) :
     area[numofi] = cal
 # 圖片分塊結束
 
+for b in range( numofi )
+  print( island[b+1] )
+  print( 'Area = ', cal )
 
 
 
